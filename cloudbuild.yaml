@@ -8,8 +8,7 @@ steps:
     args: ["push", "gcr.io/$PROJECT_ID/patani-ml"]
   # Deploying
   - name: "gcr.io/cloud-builders/gcloud"
-    args:
-      [
+    args: [
         "run",
         "deploy",
         "patani-ml",
@@ -20,7 +19,7 @@ steps:
         "--platform",
         "managed",
         "--allow-unauthenticated",
-        "--args=--model_config_file=/models/model_config.config",
+        # "--args=--model_config_file=/models/model_config.config",
       ]
 # images:
 #   - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest"
