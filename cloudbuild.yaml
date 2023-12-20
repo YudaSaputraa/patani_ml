@@ -1,20 +1,11 @@
 steps:
-  - id: "build image"
-    name: "gcr.io/cloud-builders/docker"
-    args:
-      [
-        "build",
-        "-t",
-        "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}",
-        "-f",
-        "./Dockerfile",
-        ".",
-      ]
+  # Build the container image
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/patani-ml", "."]
 
-  - id: "push image"
-    name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest"]
-
+  # Push the container image to Container Registry
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/patani-ml"]
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       [
