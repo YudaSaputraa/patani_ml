@@ -6,6 +6,7 @@ steps:
   # Push the container image to Container Registry
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/$PROJECT_ID/patani-ml"]
+  # Deploying
   - name: "gcr.io/cloud-builders/gcloud"
     args:
       [
@@ -13,14 +14,12 @@ steps:
         "deploy",
         "patani-ml",
         "--image",
-        "gcr.io/patani-ch2-ps160/patani-ml",
+        "gcr.io/$PROJECT_ID/patani-ml",
         "--region",
         "asia-southeast2",
         "--platform",
         "managed",
         "--allow-unauthenticated",
-        "--port=8080",
-        "--port=8501",
         "--args=--model_config_file=/models/model_config.config",
       ]
 # images:
