@@ -22,7 +22,7 @@ steps:
         "deploy",
         "patani-ml",
         "--image",
-        "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest",
+        "gcr.io/patani-ch2-ps160/patani-ml:latest",
         "--region",
         "asia-southeast2",
         "--platform",
