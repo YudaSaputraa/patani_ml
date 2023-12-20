@@ -13,7 +13,7 @@ steps:
         "deploy",
         "patani-ml",
         "--image",
-        "gcr.io/patani-ch2-ps160/patani-ml:latest",
+        "gcr.io/patani-ch2-ps160/patani-ml",
         "--region",
         "asia-southeast2",
         "--platform",
@@ -23,6 +23,5 @@ steps:
         "--port=8501",
         "--args=--model_config_file=/models/model_config.config",
       ]
-
 # images:
 #   - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest"
