@@ -1,26 +1,21 @@
-steps:
-  # Build the container image
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/patani-ml", "."]
 
-  # Push the container image to Container Registry
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/patani-ml"]
-  # Deploying
-  - name: "gcr.io/cloud-builders/gcloud"
+steps:
+  - id: "build image"
+    name: "gcr.io/cloud-builders/docker"
     args:
       [
-        "run",
-        "deploy",
-        "patani-ml",
-        "--image",
-        "gcr.io/$PROJECT_ID/patani-ml",
-        "--region",
-        "asia-southeast2",
-        "--platform",
-        "managed",
-        "--allow-unauthenticated",
-        "--args=--model_config_file=/models/model_config.config",
+        "build",
+        "-t",
+        "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}",
+        "-f",
+        "./Dockerfile",
+        ".",
       ]
-# images:
-#   - "gcr.io/${PROJECT_ID}/patani-ml"
+
+  - id: "push image"
+    name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"]
+
+
+images:
+  - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"
