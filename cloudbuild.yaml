@@ -18,3 +18,23 @@ steps:
 
 images:
   - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}"
+
+ - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      [
+        "run",
+        "deploy",
+        "patani-ml",
+        "--image",
+        "gcr.io/patani-ch2-ps160/patani-ml",
+        "--region",
+        "asia-southeast2",
+        "--platform",
+        "managed",
+        "--allow-unauthenticated",
+        "--port=8080",
+        "--port=8501",
+        "--args=--model_config_file=/models/model_config.config",
+      ]
+
+      
