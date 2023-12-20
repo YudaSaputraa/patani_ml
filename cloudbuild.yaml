@@ -22,5 +22,5 @@ steps:
         "--allow-unauthenticated",
         "--args=--model_config_file=/models/model_config.config",
       ]
-images:
-  - "gcr.io/${PROJECT_ID}/patani-ml"
+# images:
+#   - "gcr.io/${PROJECT_ID}/patani-ml"
