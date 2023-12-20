@@ -13,7 +13,7 @@ steps:
 
   - id: "push image"
     name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest"] # Menambahkan tag "latest" atau versi lain yang sesuai
+    args: ["push", "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest"]
 
   - name: "gcr.io/cloud-builders/gcloud"
     args:
@@ -22,7 +22,7 @@ steps:
         "deploy",
         "patani-ml",
         "--image",
-        "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest", # Menggunakan tag yang sama saat melakukan deployment
+        "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest",
         "--region",
         "asia-southeast2",
         "--platform",
@@ -34,4 +34,4 @@ steps:
       ]
 
 images:
-  - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest" # Menambahkan tag "latest" pada daftar image
+  - "gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest"
